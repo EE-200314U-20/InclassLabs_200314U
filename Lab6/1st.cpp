@@ -5,81 +5,82 @@ using namespace std;
 
 class Stack {
 private:
-    int a[MAX_SIZE];
-    int t;
+    int stackArr[MAX_SIZE];
+    int topIndex;
 
 public:
     Stack() {
-        t = -1;
+        topIndex = -1;
     }
-    //check whether stack is empty.
+
+    // Check whether the stack is empty
     bool isEmpty() {
-        if (t<0){
+        if (topIndex < 0) {
             return true;
-        }
-        else{
+        } else {
             return false;
         }
     }
-    
-    // push an element x to the stack
-    bool push(int k) {
-        t=t+1;
-        if (t > MAX_SIZE ) {
+
+    // Push an element 'item' to the stack
+    bool push(int item) {
+        topIndex = topIndex + 1;
+        if (topIndex > MAX_SIZE) {
             cout << "Stack Overflow!" << endl;
             return false;
         } else {
-            a[t] = k;
-            cout << k << " pushed into stack" << endl;
+            stackArr[topIndex] = item;
+            cout << item << " pushed into the stack" << endl;
             return true;
         }
     }
-    
-    //remove a element from the stack
+
+    // Remove and return the top element from the stack
     int pop() {
         if (isEmpty()) {
             cout << "Stack Underflow!" << endl;
             return -1;
         } else {
-            int popped_element = a[t];
-            t=t-1;
-            cout << popped_element << " popped from stack" << endl;
-            return popped_element;
+            int poppedElement = stackArr[topIndex];
+            topIndex = topIndex - 1;
+            cout << poppedElement << " popped from the stack" << endl;
+            return poppedElement;
         }
     }
 
-    //display the final stack
+    // Display the final stack contents
     void displayStack() {
         cout << "Final stack:" << endl;
-        for(int i = 0; i <=t; i++) {
-            cout << a[i] << " ";
+        for (int i = 0; i <= topIndex; i++) {
+            cout << stackArr[i] << " ";
         }
         cout << endl;
     }
 };
 
 int main() {
-    Stack s;
-    s.push(8);
-    s.push(10);
-    s.push(5);
-    s.push(11);
-    s.push(15);
-    s.push(23);
-    s.push(6);
-    s.push(18);
-    s.push(20);
-    s.push(17);
-    s.displayStack();
-    s.pop();
-    s.pop();
-    s.pop();
-    s.pop();
-    s.pop();
-    s.push(4);
-    s.push(13);
-    s.push(3);
-    s.push(1);
-    s.displayStack();
-    return 0;
+    Stack stack;
+    stack.push(8);
+    stack.push(10);
+    stack.push(5);
+    stack.push(11);
+    stack.push(15);
+    stack.push(23);
+    stack.push(6);
+    stack.push(18);
+    stack.push(20);
+    stack.push(17);
+    stack.displayStack();
+    stack.pop();
+    stack.pop();
+    stack.pop();
+    stack.pop();
+    stack.pop();
+    stack.push(4);
+    stack.push(13);
+    stack.push(3);
+    stack.push(1);
+    stack.displayStack();
+
+    return 0;
 }
