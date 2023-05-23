@@ -17,9 +17,9 @@ int minKey(vector<int>& key, vector<bool>& mstSet, int V) {
 
 // Function to print the minimum spanning tree
 void printMST(vector<int>& parent, vector<vector<int>>& graph, int V) {
-    cout << "Edge \tWeight\n";
+    cout << "  Edges \t    Weight\n";
     for (int i = 1; i < V; i++)
-        cout << parent[i] << " - " << i << "\t" << graph[i][parent[i]] << "\n";
+        cout << parent[i] << " - " <<     i << "       \t" << graph[i][parent[i]] << "\n";
 }
 
 // Function to implement Prim's algorithm and obtain the minimum spanning tree
