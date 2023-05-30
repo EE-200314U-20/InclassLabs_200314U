@@ -48,7 +48,7 @@ void dijkstra(int graph[V][V], int source) {
 
     // Print the shortest distances from the source to each city
     cout << "      \n             Source city is " << source << "\n\n";
-    cout << "From " << "         To             " << "Average time taken \n";
+    cout << "From " << "         To             " << "Time taken \n";
     for (int i = 0; i < V; i++) {
         if (i == source) {
             continue;
