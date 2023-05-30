@@ -4,12 +4,12 @@ using namespace std;
 
 #define V 6 // Number of vertices
 
-int minDistance(int distances[], bool visited[]) {
+int mintime(int Time[], bool visited[]) {
     int min = INT_MAX, min_index;
 
     for (int v = 0; v < V; v++) {
-        if (!visited[v] && distances[v] <= min) {
-            min = distances[v];
+        if (!visited[v] && Time[v] <= min) {
+            min = Time[v];
             min_index = v;
         }
     }
@@ -18,42 +18,42 @@ int minDistance(int distances[], bool visited[]) {
 }
 
 void dijkstra(int graph[V][V], int source) {
-    int distances[V]; // Store the shortest distance from source to each city
+    int Time[V]; // Store the shortest time from source to each city
     bool visited[V]; // Track visited cities
 
-    // Initialize distances and visited array
+    // Initialize Time and visited array
     for (int i = 0; i < V; i++) {
-        distances[i] = INT_MAX;
+        Time[i] = INT_MAX;
         visited[i] = false;
     }
 
-    // Distance from source to itself is always 0
-    distances[source] = 0;
+    // Time from source to itself is always 0
+    Time[source] = 0;
 
     // Find the shortest path for all cities
     for (int count = 0; count < V - 1; count++) {
-        int u = minDistance(distances, visited);
+        int u = mintime(Time, visited);
 
         // Mark the selected city as visited
         visited[u] = true;
 
-        // Update distances of the adjacent cities of the selected city
+        // Update Time of the adjacent cities of the selected city
         for (int v = 0; v < V; v++) {
-            if (!visited[v] && graph[u][v] && distances[u] != INT_MAX &&
-                distances[u] + graph[u][v] < distances[v]) {
-                distances[v] = distances[u] + graph[u][v];
+            if (!visited[v] && graph[u][v] && Time[u] != INT_MAX &&
+                Time[u] + graph[u][v] < Time[v]) {
+                Time[v] = Time[u] + graph[u][v];
             }
         }
     }
 
-    // Print the shortest distances from the source to each city
+    // Print the shortest Time from the source to each city
     cout << "      \n             Source city is " << source << "\n\n";
     cout << "From " << "         To             " << "Time taken \n";
     for (int i = 0; i < V; i++) {
         if (i == source) {
             continue;
         }
-        cout << "  " << source << "           " << i << "                           " << distances[i] << "\n";
+        cout << "  " << source << "           " << i << "                     " << Time[i] << "\n";
     }
 }
 
